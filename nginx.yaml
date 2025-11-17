@@ -1,0 +1,8 @@
+    - name: Configure Docker container
+      hosts: happy_chatterjee
+      connection: docker
+      tasks:
+        - name: Install Nginx
+          apt:
+            name: nginx
+            state: present
