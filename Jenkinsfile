@@ -4,7 +4,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Checkout your code from a repository
-                git 'your_repo_url'
+                git 'https://github.com/akadhgupta12338/ansible_cicd.git'
             }
         }
         stage('Run Ansible Playbook') {
