@@ -1,23 +1,21 @@
 pipeline {
     agent any
+    
     stages {
-        stage('Checkout') {
+        stage("SCM checkout") {
             steps {
-                // Checkout your code from a repository
-                git 'https://github.com/akadhgupta12338/ansible_cicd.git'
+                git https://github.com/akadhgupta12338/ansible_cicd.git'
             }
         }
-        stage('Run Ansible Playbook') {
+        
+        stage("Execute Ansible") {
             steps {
-                ansiblePlaybook(
-                    colorized: true,
-                    credentialsId: 'ssh-jenkins-key', // ID of the credentials you added
-                    inventory: 'path/to/your/inventory.ini', // Path to your inventory file
-                    playbook: 'path/to/your/playbook.yml', // Path to your playbook
-                    sudo: true,
-                    sudoUser: 'jenkins'
-                )
-            }
-        }
+                ansiblePlaybook credentialsId: 'private-key',
+                                 disableHostKeyChecking: true,
+                                 installation: 'Ansible',
+                                 inventory: 'inventory.yaml',
+                                 playbook: 'nginx.yaml'
+            }    
+        }    
     }
 }
