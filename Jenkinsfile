@@ -10,7 +10,7 @@ pipeline {
         
         stage("Execute Ansible") {
             steps {
-                ansiblePlaybook credentialsId: 'private-key',
+                ansiblePlaybook credentialsId: 'akash',
                                  disableHostKeyChecking: true,
                                  installation: 'Ansible',
                                  inventory: 'inventory.yaml',
